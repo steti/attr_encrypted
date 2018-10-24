@@ -354,7 +354,12 @@ module AttrEncrypted
     # and their corresponding options as values to the instance
     #
     def encrypted_attributes
-      @encrypted_attributes ||= self.class.encrypted_attributes.dup
+      # Backport fix from https://github.com/attr-encrypted/attr_encrypted/pull/320
+      @encrypted_attributes ||= begin
+        duplicated= {}
+        self.class.encrypted_attributes.map { |key, value| duplicated[key] = value.dup }
+        duplicated
+      end
     end
 
     protected

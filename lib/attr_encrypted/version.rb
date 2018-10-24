@@ -3,7 +3,7 @@ module AttrEncrypted
   module Version
     MAJOR = 3
     MINOR = 1
-    PATCH = 0
+    PATCH = 1
 
     # Returns a version string by joining <tt>MAJOR</tt>, <tt>MINOR</tt>, and <tt>PATCH</tt> with <tt>'.'</tt>
     #
@@ -11,7 +11,7 @@ module AttrEncrypted
     #
     #   Version.string # '1.0.2'
     def self.string
-      [MAJOR, MINOR, PATCH].join('.')
+      [MAJOR, MINOR, PATCH].join('.') + 'pre'
     end
   end
 end
